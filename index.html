@@ -955,9 +955,10 @@
 
   .profile-inner {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 80px;
+    grid-template-columns: 1fr; /* 1カラムに変更 */
+    gap: 40px;
     align-items: center;
+    text-align: center; /* テキストを中央寄せ */
   }
 
   .profile-avatar {
@@ -1035,14 +1036,15 @@
   }
 
   .profile-bio {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 2.2;
-    color: rgba(200,212,224,0.7);
-    letter-spacing: 0.05em;
-    border-left: 2px solid rgba(30,111,186,0.4);
-    padding-left: 24px;
+    color: rgba(200,212,224,0.8);
+    letter-spacing: 0.08em;
+    padding: 24px 0;
+    text-align: left; /* 文章自体は左揃えの方が見やすいです */
+    max-width: 650px;
+    margin: 0 auto;
   }
-
   .profile-tags {
     display: flex;
     flex-wrap: wrap;
@@ -1432,31 +1434,25 @@
 <!-- Profile -->
 <section id="profile">
   <div class="profile">
-    <div class="profile-inner">
-      <div class="profile-avatar reveal">
-        <div class="profile-avatar-box">
-          <div class="profile-avatar-icon"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="32" cy="22" r="10" stroke="#4aa3e8" stroke-width="1.2" opacity="0.5"/>
-  <path d="M10 54C10 42 20 34 32 34C44 34 54 42 54 54" stroke="#4aa3e8" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
-</svg></div>
-          <div class="profile-avatar-coming">Photo Coming Soon</div>
-        </div>
-      </div>
+    <div class="services-header reveal">
+      <div class="section-label">Founder & CEO</div>
+      <h2 class="section-title">代表挨拶</h2>
+    </div>
+    <div class="profile-inner" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto;">
       <div class="reveal">
-        <div class="section-label">Founder & CEO</div>
-        <div class="profile-name-jp">谷屋 海斗</div>
-        <div class="profile-name-en">Kaito Taniya</div>
-        <div class="profile-role">Founder / CEO — AXIA</div>
-        <p class="profile-bio">
-          学生起業家として、AIの力で「普通の人が抱える普通の課題」を解決することに情熱を注ぐ。<br><br>
-          「技術は手段であり、目的は人の生活をもっと豊かにすること」という信念のもと、Axia Labs・Axia Campusの2事業を立ち上げる。<br><br>
-          営業が得意でなくても、AIと誠実さで信頼は築ける——その証明を、AXIAそのものでやり続ける。
-        </p>
-        <div class="profile-tags">
+        <div class="profile-name-jp" style="text-align: center; margin-bottom: 10px;">谷屋 海斗</div>
+        <div class="profile-name-en" style="text-align: center; margin-bottom: 40px; letter-spacing: 0.5em;">KAITO TANIYA</div>
+        
+        <div class="profile-bio" style="border-left: none; border-top: 1px solid rgba(30,111,186,0.4); border-bottom: 1px solid rgba(30,111,186,0.4); padding: 40px 0; line-height: 2.4;">
+          兵庫県立大学に在籍しながら、学生起業家として「技術を、日常の価値に変える」ことをミッションに活動しています。<br><br>
+          AIは魔法ではなく、あくまで優れた「道具」です。しかし、その道具を正しく実装することで、これまで諦めていた課題や、日々の煩雑な業務を驚くほどシンプルに解決できると確信しています。<br><br>
+          AXIA（価値）という名に恥じぬよう、最先端の技術を地に足のついたソリューションとして提供し、皆様のビジネスや生活に目に見える変化を実装し続けます。
+        </div>
+        
+        <div class="profile-tags" style="justify-content: center; margin-top: 40px;">
           <span class="profile-tag">AI Implementation</span>
           <span class="profile-tag">Student Entrepreneur</span>
-          <span class="profile-tag">Product Design</span>
-          <span class="profile-tag">Community Building</span>
+          <span class="profile-tag">Visionary Coding</span>
         </div>
       </div>
     </div>
