@@ -383,9 +383,12 @@
   }
 
   .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    display: flex;       /* gridからflexに変更 */
+    flex-wrap: wrap;     /* 折り返しを許可 */
+    justify-content: center; /* ★中央に寄せる */
+    gap: 32px;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .service-card {
@@ -393,10 +396,12 @@
     background: linear-gradient(145deg, rgba(26,32,53,0.9), rgba(8,13,26,0.95));
     border: 1px solid rgba(30,111,186,0.2);
     border-radius: 4px;
-    padding: 48px 36px;
+    padding: 56px 40px;
     overflow: hidden;
     transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
     cursor: default;
+    flex: 0 1 400px;    /* ★カードの幅を固定しつつ柔軟に */
+    min-width: 300px;   /* スマホでも崩れない最小幅 */
   }
 
   .service-card::before {
@@ -1217,26 +1222,14 @@
   <div class="services">
     <div class="services-header reveal">
       <div class="section-label">Our Business</div>
-      <h2 class="section-title">3つの事業で、価値を実装する</h2>
+      <h2 class="section-title">２つの事業で、価値を実装する</h2>
       <p class="section-body" style="margin: 0 auto; text-align: center;">
         稼ぐエンジン・夢のビジョン・ユーザーの入り口。<br>この三角形の構造が、AXIAの強さの源泉です。
       </p>
     </div>
     <div class="services-grid">
       <div class="service-card reveal reveal-delay-1">
-        <div class="service-number">01 / 03</div>
-        <span class="service-icon"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="9" y="10" width="18" height="14" rx="2" stroke="#4aa3e8" stroke-width="1.2"/>
-  <circle cx="14" cy="17" r="2" stroke="#4aa3e8" stroke-width="1.2"/>
-  <circle cx="22" cy="17" r="2" stroke="#4aa3e8" stroke-width="1.2"/>
-  <line x1="18" y1="10" x2="18" y2="7" stroke="#4aa3e8" stroke-width="1.2" stroke-linecap="round"/>
-  <circle cx="18" cy="6" r="1.2" fill="#4aa3e8"/>
-  <line x1="9" y1="17" x2="6" y2="17" stroke="#4aa3e8" stroke-width="1.2" stroke-linecap="round"/>
-  <line x1="27" y1="17" x2="30" y2="17" stroke="#4aa3e8" stroke-width="1.2" stroke-linecap="round"/>
-  <line x1="14" y1="24" x2="14" y2="28" stroke="#4aa3e8" stroke-width="1.2" stroke-linecap="round"/>
-  <line x1="22" y1="24" x2="22" y2="28" stroke="#4aa3e8" stroke-width="1.2" stroke-linecap="round"/>
-  <line x1="14" y1="17" x2="22" y2="17" stroke="#4aa3e8" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 1.5"/>
-</svg></span>
+        <div class="service-number">01 / 02</div>
         <div class="service-name">Axia Labs</div>
         <div class="service-name-jp">AI受託開発</div>
         <p class="service-desc">
@@ -1248,15 +1241,7 @@
       </div>
       
       <div class="service-card reveal reveal-delay-2">
-        <div class="service-number">03 / 03</div>
-        <span class="service-icon"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="18" cy="10" r="3" stroke="#4aa3e8" stroke-width="1.2"/>
-  <circle cx="9" cy="26" r="3" stroke="#4aa3e8" stroke-width="1.2"/>
-  <circle cx="27" cy="26" r="3" stroke="#4aa3e8" stroke-width="1.2"/>
-  <line x1="15.5" y1="12.5" x2="11" y2="23.5" stroke="#4aa3e8" stroke-width="1.2" stroke-linecap="round"/>
-  <line x1="20.5" y1="12.5" x2="25" y2="23.5" stroke="#4aa3e8" stroke-width="1.2" stroke-linecap="round"/>
-  <line x1="12" y1="26" x2="24" y2="26" stroke="#4aa3e8" stroke-width="1.2" stroke-linecap="round"/>
-</svg></span>
+        <div class="service-number">02 / 02</div>
         <div class="service-name">Campus Market</div>
         <div class="service-name-jp">学生向けフリマアプリ</div>
         <p class="service-desc">
