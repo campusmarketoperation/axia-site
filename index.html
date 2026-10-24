@@ -1112,6 +1112,9 @@
   }
 
   .footer-links a:hover { color: var(--blue-light); }
+  footer { flex-wrap: wrap; row-gap: 20px; }
+  .footer-links a { white-space: nowrap; }
+  .footer-legal { order: 10; flex-basis: 100%; flex-wrap: wrap; justify-content: center; gap: 8px 24px; padding-top: 20px; border-top: 1px solid rgba(30,111,186,0.08); }
 
   /* ============ KEYFRAMES ============ */
   @keyframes fadeUp {
@@ -1153,6 +1156,7 @@
     .ai-inner { grid-template-columns: 1fr; gap: 60px; }
     .contact-steps { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 10px 20px; }
     .phone-mockup { display: none; }
   }
 </style>
@@ -1293,7 +1297,7 @@
         <div class="service-name">AXIA Shift</div>
         <div class="service-name-jp">飲食店向けシフト管理システム</div>
         <p class="service-desc">
-          LINEでスタッフのシフト希望を集め、スプレッドシートに自動集計。半月ごとのシフト作成にかかる店長の手間を大幅に減らします。系列店・複数店舗の運用にも対応した月額制サービスです。
+          LINEでスタッフのシフト希望を集め、ブラウザでシフト表を作成・確定してLINEで配信。半月ごとのシフト作成にかかる店長の手間を大幅に減らします。系列店・複数店舗の運用にも対応した月額制サービスです。
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;">
           <span style="font-size:11px;letter-spacing:0.08em;background:rgba(30,111,186,0.1);border:1px solid rgba(30,111,186,0.25);color:rgba(200,212,224,0.8);padding:4px 12px;border-radius:2px;">LINEでシフト提出</span>
@@ -1306,6 +1310,7 @@
         <a href="https://lin.ee/i9Oq13e" class="btn-primary" style="padding:12px 28px;font-size:12px;">
           導入・デモのご相談 →
         </a>
+        <a href="/axia-shift/" style="display:inline-block;margin-left:16px;font-size:12px;letter-spacing:0.08em;color:var(--accent-gold);text-decoration:none;border-bottom:1px solid rgba(184,164,114,0.4);padding-bottom:2px;">機能・料金を見る</a>
       </div>
 
     </div>
@@ -1604,6 +1609,12 @@
     <li><a href="#flow">導入の流れ</a></li>
     <li><a href="#profile">代表紹介</a></li>
     <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+  <ul class="footer-links footer-legal">
+    <li><a href="/axia-shift/">AXIA Shift 料金</a></li>
+    <li><a href="/terms/">利用規約</a></li>
+    <li><a href="/tokushoho/">特定商取引法に基づく表記</a></li>
+    <li><a href="/privacy/">プライバシーポリシー</a></li>
   </ul>
   <div class="footer-copy">© 2026 AXIA. All rights reserved.</div>
 </footer>
