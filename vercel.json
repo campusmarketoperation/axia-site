@@ -1,0 +1,6 @@
+{
+  "regions": ["hnd1"],
+  "crons": [
+    { "path": "/api/cron/remind", "schedule": "0 13 * * *" }
+  ]
+}
