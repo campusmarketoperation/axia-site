@@ -1,0 +1,37 @@
+# AXIA AI Company のシステム運用部が起票した Issue（@claude 付き）を、Claude Code が実装する
+# 各リポジトリの .github/workflows/claude.yml に置く
+name: Claude Code
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+
+jobs:
+  claude:
+    # リポジトリの持ち主（谷屋）が書いた @claude だけに反応する（公開リポジトリでの悪用防止）
+    if: |
+      (github.event_name == 'issues' && github.event.issue.user.login == github.repository_owner && contains(github.event.issue.body, '@claude')) ||
+      (github.event_name != 'issues' && github.event.comment.user.login == github.repository_owner && contains(github.event.comment.body, '@claude'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+      id-token: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          # Settings → Secrets and variables → Actions に ANTHROPIC_API_KEY を登録しておく
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: |
+            --max-turns 40
