@@ -78,7 +78,7 @@ footer a{color:#c7cbd6;margin-right:18px}
     <p class="eyebrow">FOR RESTAURANT CHAINS</p>
     <h1>シフトの回収から配信まで、<br>LINEとブラウザで完結。</h1>
     <p class="lead">AXIA Shift は飲食店向けのシフト管理サービスです。アルバイトはいつものLINEで希望を送るだけ。店長はブラウザで表を整えて、確定したらそのままLINEで全員に配信できます。</p>
-    <a class="btn" href="/#contact">導入の相談をする</a><a class="btn ghost" href="https://lin.ee/i9Oq13e">LINEで問い合わせ</a>
+    <a class="btn" href="/#contact" data-cta="hero">デモ・試験導入を相談する</a><a class="btn ghost" href="https://lin.ee/i9Oq13e">LINEで問い合わせ</a>
   </div>
   <img src="/axia-shift/logo.png" alt="AXIA Shift ロゴ" width="200" height="200">
 </div></div>
@@ -94,6 +94,7 @@ footer a{color:#c7cbd6;margin-right:18px}
     <div class="card"><h3>兼務スタッフにも対応</h3><p>2店舗に所属する社員・スタッフも、日ごとに出勤する店を選べます。両方の店のシフト表に正しく表示されます。</p></div>
     <div class="card"><h3>変更履歴とメモ</h3><p>誰がいつシフトを変えたかを記録。日ごとのメモ欄で、連絡事項もシフト表と一緒に共有できます。</p></div>
   </div>
+  <p style="text-align:center;margin:32px 0 0"><a class="btn" style="background:var(--navy);color:#fff;margin:0" href="/#contact" data-cta="content">自社に合うか相談する</a></p>
 </div></section>
 
 <section class="alt"><div class="wrap">
@@ -155,12 +156,23 @@ footer a{color:#c7cbd6;margin-right:18px}
 <section class="cta"><div class="wrap">
   <h2>まずは1店舗から試してみませんか</h2>
   <p style="opacity:.85;margin:8px 0 24px">導入の流れや料金のご相談は、お気軽にどうぞ。</p>
-  <a class="btn" href="/#contact">お問い合わせ</a><a class="btn ghost" href="https://lin.ee/i9Oq13e">LINEで問い合わせ</a>
+  <a class="btn" href="/#contact" data-cta="footer">デモ・試験導入の相談はこちら</a><a class="btn ghost" href="https://lin.ee/i9Oq13e">LINEで問い合わせ</a>
 </div></section>
 
 <footer><div class="wrap">
   <a href="/">AXIA トップ</a><a href="/axia-shift/">AXIA Shift</a><a href="/tokushoho/">特定商取引法に基づく表記</a><a href="/terms/">利用規約</a><a href="/privacy/">プライバシーポリシー</a>
   <p style="margin:14px 0 0">© 2026 AXIA. All rights reserved.</p>
 </div></footer>
+<script>
+// 計測: 既存のGA4(gtag)を利用。個人情報は送信しない
+(function(){
+  function send(name,params){ if(typeof gtag==='function'){ gtag('event',name,params); } }
+  send('product_page_view',{product:'shift'});
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[data-cta]');
+    if(a){ send('demo_cta_click',{product:'shift',placement:a.getAttribute('data-cta')}); }
+  });
+})();
+</script>
 </body>
 </html>
