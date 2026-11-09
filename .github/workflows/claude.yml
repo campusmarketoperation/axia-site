@@ -33,5 +33,6 @@ jobs:
         with:
           # Settings → Secrets and variables → Actions に CLAUDE_CODE_OAUTH_TOKEN（claude setup-token で作るProプランのトークン）を登録しておく
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          show_full_output: true  # 一時的：失敗の原因を見るため
           claude_args: |
             --max-turns 40
