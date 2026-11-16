@@ -57,6 +57,12 @@ dl.faq dd{margin:4px 0 0;color:var(--sub)}
 .cta{background:var(--gray);text-align:center;border-top:1px solid var(--line)}
 footer{background:#fff;border-top:1px solid var(--line);color:var(--sub);font-size:13px;padding:28px 0}
 footer a{color:var(--sub);margin-right:18px}
+.field{margin:0 0 16px}
+.field label{display:block;font-weight:600;margin-bottom:4px;font-size:15px}
+.field input,.field select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:4px;font:inherit;background:#fff;color:var(--ink)}
+.form{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--ink);border-radius:4px;padding:28px}
+.form button.btn{width:100%;margin:8px 0 0;cursor:pointer;font:inherit;font-weight:700}
+.form-msg{margin:14px 0 0;font-size:14px;text-align:center}
 @media (max-width:760px){
   .hero .wrap{grid-template-columns:1fr}
   .hero-icon{width:80px;height:80px;order:-1}
@@ -70,7 +76,7 @@ footer a{color:var(--sub);margin-right:18px}
 <body>
 <header><div class="wrap">
   <a class="brand" href="/">AXIA</a>
-  <nav><a href="#features">機能</a><a href="#price">料金</a><a href="#faq">よくある質問</a><a href="/#contact">お問い合わせ</a></nav>
+  <nav><a href="#features">機能</a><a href="#trial">無料試験導入</a><a href="#price">料金</a><a href="#faq">よくある質問</a><a href="/#contact">お問い合わせ</a></nav>
 </div></header>
 
 <div class="hero"><div class="wrap">
@@ -79,7 +85,7 @@ footer a{color:var(--sub);margin-right:18px}
     <h1 data-copy="hero.title">シフトの回収から配信まで、
 LINEとブラウザで完結。</h1>
     <p class="lead" data-copy="hero.lead">AXIA Shift は飲食店向けのシフト管理サービスです。アルバイトはいつものLINEで希望を送るだけ。店長はブラウザで表を整えて、確定したらそのままLINEで全員に配信できます。</p>
-    <a class="btn" href="/#contact" data-cta="hero" data-copy="hero.ctaPrimary">デモ・試験導入を相談する</a><a class="btn ghost" href="https://lin.ee/i9Oq13e" data-copy="hero.ctaLine">LINEで問い合わせ</a>
+    <a class="btn" href="#trial" data-cta="hero_trial" data-copy="hero.ctaTrial">1ヶ月無料試験導入に申し込む</a><a class="btn ghost" href="/#contact" data-cta="hero" data-copy="hero.ctaPrimary">デモ・試験導入を相談する</a><a class="btn ghost" href="https://lin.ee/i9Oq13e" data-copy="hero.ctaLine">LINEで問い合わせ</a>
   </div>
   <!-- シフト表（カレンダー）アイコン -->
   <svg class="hero-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="9" width="36" height="32" rx="2"/><path d="M6 19h36M15 5v8M33 5v8M16 29l5 5 11-11"/></svg>
@@ -97,6 +103,40 @@ LINEとブラウザで完結。</h1>
     <div class="card"><!-- メモ --><svg class="icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="6" width="30" height="36" rx="2"/><path d="M16 16h16M16 24h16M16 32h9"/></svg><h3 data-copy="features.items.5.title">変更履歴とメモ</h3><p data-copy="features.items.5.body">誰がいつシフトを変えたかを記録。日ごとのメモ欄で、連絡事項もシフト表と一緒に共有できます。</p></div>
   </div>
   <p style="text-align:center;margin:32px 0 0"><a class="btn" style="margin:0" href="/#contact" data-cta="content" data-copy="features.ctaContent">自社に合うか相談する</a></p>
+</div></section>
+
+<section><div class="wrap">
+  <h2 data-copy="target.title">対象業種と解決する業務</h2>
+  <p class="h2sub" data-copy="target.sub">飲食店のシフト作成にかかる手間を減らします。</p>
+  <div class="grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="card"><h3 data-copy="target.items.0.title">対象：飲食店（複数店舗のチェーンにも対応）</h3><p data-copy="target.items.0.body">アルバイト・パートが多く、シフト希望の回収や調整に毎月時間がかかっている店舗・法人向けです。</p></div>
+    <div class="card"><h3 data-copy="target.items.1.title">解決する業務：シフト作成工数の削減</h3><p data-copy="target.items.1.body">紙・グループLINE・Excelでの希望回収と転記、確定後の連絡までを、LINEとブラウザにまとめます。</p></div>
+  </div>
+</div></section>
+
+<section class="alt" id="trial-contents"><div class="wrap">
+  <h2 data-copy="trial.title">1ヶ月無料試験導入で確認すること</h2>
+  <p class="h2sub" data-copy="trial.sub">1ヶ月間で、自社の運用に合うかを次の項目で判断できます。</p>
+  <div class="grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="card"><h3 data-copy="trial.items.0.title">希望回収</h3><p data-copy="trial.items.0.body">スタッフがLINEで無理なくシフト希望を提出できるか、回収の手間が減るか。</p></div>
+    <div class="card"><h3 data-copy="trial.items.1.title">シフト表の作成</h3><p data-copy="trial.items.1.body">集まった希望から、店長がシフト表を作る時間がどれだけ短くなるか。</p></div>
+    <div class="card"><h3 data-copy="trial.items.2.title">確定・配信</h3><p data-copy="trial.items.2.body">確定したシフト表のLINE配信で、連絡漏れや確認の手間が減るか。</p></div>
+    <div class="card"><h3 data-copy="trial.items.3.title">店舗運用との相性</h3><p data-copy="trial.items.3.body">ヘルプ調整や兼務スタッフなど、自社の店舗運用に合うか。</p></div>
+  </div>
+  <p class="note" style="margin-top:14px" data-copy="trial.note">初期費用 0円 ／ 1ヶ月の無料試験導入。電話番号の入力は不要です。</p>
+</div></section>
+
+<section id="trial"><div class="wrap">
+  <h2 style="text-align:center" data-copy="form.title">1ヶ月無料試験導入のお申し込み</h2>
+  <p class="h2sub" style="text-align:center" data-copy="form.sub">入力は4項目だけ。電話番号は不要です。</p>
+  <form class="form" id="trial-form" novalidate>
+    <div class="field"><label for="f-name" data-copy="form.labelName">氏名</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+    <div class="field"><label for="f-company" data-copy="form.labelCompany">会社名（または店名）</label><input id="f-company" name="company" type="text" autocomplete="organization" required></div>
+    <div class="field"><label for="f-email" data-copy="form.labelEmail">メールアドレス</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="f-reason" data-copy="form.labelReason">導入検討の背景</label><select id="f-reason" name="reason" required><option value="" data-copy="form.reasonPlaceholder">選択してください</option><option>シフト作成に時間がかかっている</option><option>希望の回収・集計が大変</option><option>シフトの連絡漏れ・確認の手間を減らしたい</option><option>複数店舗のシフト管理をまとめたい</option><option>今の方法の見直し・情報収集</option></select></div>
+    <button class="btn" type="submit" data-copy="form.submit">1ヶ月無料試験導入に申し込む</button>
+    <p class="form-msg" id="trial-msg" role="status"></p>
+  </form>
 </div></section>
 
 <section class="alt"><div class="wrap">
@@ -158,7 +198,7 @@ LINEとブラウザで完結。</h1>
 <section class="cta"><div class="wrap">
   <h2 data-copy="cta.title">まずは1店舗から試してみませんか</h2>
   <p class="h2sub" style="margin:8px 0 24px" data-copy="cta.lead">導入の流れや料金のご相談は、お気軽にどうぞ。</p>
-  <a class="btn" href="/#contact" data-cta="footer" data-copy="cta.button">デモ・試験導入の相談はこちら</a><a class="btn ghost" href="https://lin.ee/i9Oq13e" data-copy="hero.ctaLine">LINEで問い合わせ</a>
+  <a class="btn" href="#trial" data-cta="footer_trial" data-copy="hero.ctaTrial">1ヶ月無料試験導入に申し込む</a><a class="btn ghost" href="/#contact" data-cta="footer" data-copy="cta.button">デモ・試験導入の相談はこちら</a><a class="btn ghost" href="https://lin.ee/i9Oq13e" data-copy="hero.ctaLine">LINEで問い合わせ</a>
 </div></section>
 
 <footer><div class="wrap">
@@ -181,9 +221,30 @@ LINEとブラウザで完結。</h1>
 (function(){
   function send(name,params){ if(typeof gtag==='function'){ gtag('event',name,params); } }
   send('product_page_view',{product:'shift'});
+  var COPY=null;
+  fetch('/axia-shift/copy.json').then(function(r){return r.ok?r.json():null;}).then(function(c){COPY=c;}).catch(function(){});
+  var form=document.getElementById('trial-form'),msg=document.getElementById('trial-msg');
+  if(form){
+    var started=false;
+    form.addEventListener('focusin',function(){ if(!started){started=true; send('trial_form_start',{product:'shift'});} });
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var f=(COPY&&COPY.form)||{}, ep=f.formEndpoint;
+      if(!ep){ msg.textContent=f.pending||'現在、フォームの受付準備中です。LINEからお申し込みください。'; return; }
+      var btn=form.querySelector('button'); btn.disabled=true;
+      var body=new FormData(form);
+      fetch(ep,{method:'POST',body:body,headers:{'Accept':'application/json'}}).then(function(r){
+        if(!r.ok){ throw new Error('x'); }
+        // 完了イベント（入力内容は送らない）
+        send('trial_form_submit',{product:'shift',reason:form.reason.value});
+        form.reset(); msg.textContent=f.done||'お申し込みを受け付けました。';
+      }).catch(function(){ msg.textContent=f.error||'送信できませんでした。'; }).then(function(){ btn.disabled=false; });
+    });
+  }
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[data-cta]');
-    if(a){ send('demo_cta_click',{product:'shift',placement:a.getAttribute('data-cta')}); }
+    if(a){ send(a.getAttribute('href')==='#trial'?'trial_cta_click':'demo_cta_click',{product:'shift',placement:a.getAttribute('data-cta')}); }
   });
 })();
 </script>
