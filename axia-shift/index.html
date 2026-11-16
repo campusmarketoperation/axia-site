@@ -63,6 +63,16 @@ footer a{color:var(--sub);margin-right:18px}
 .form{max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--ink);border-radius:4px;padding:28px}
 .form button.btn{width:100%;margin:8px 0 0;cursor:pointer;font:inherit;font-weight:700}
 .form-msg{margin:14px 0 0;font-size:14px;text-align:center}
+.sc-list{list-style:none;margin:0 0 16px;padding:0}
+.sc-list label{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;margin:0 0 8px;border:1px solid var(--line);border-radius:4px;background:#fff;cursor:pointer}
+.sc-list input{margin-top:6px;width:18px;height:18px;flex:none}
+.sc-result{margin-top:24px}
+.sc-result h3{font-size:18px;margin:0 0 12px}
+.sc-result .card{margin:0 0 12px}
+.sc-result .card h4{margin:0 0 6px;font-size:15px;color:var(--sub);font-weight:600}
+.sc-result .card p{margin:0 0 6px}
+.sc-result .card p.sc-check{font-size:14px}
+.sc-msg{margin:8px 0 0;font-size:14px;color:var(--sub)}
 @media (max-width:760px){
   .hero .wrap{grid-template-columns:1fr}
   .hero-icon{width:80px;height:80px;order:-1}
@@ -111,6 +121,24 @@ LINEとブラウザで完結。</h1>
   <div class="grid" style="grid-template-columns:repeat(2,1fr)">
     <div class="card"><h3 data-copy="target.items.0.title">対象：飲食店（複数店舗のチェーンにも対応）</h3><p data-copy="target.items.0.body">アルバイト・パートが多く、シフト希望の回収や調整に毎月時間がかかっている店舗・法人向けです。</p></div>
     <div class="card"><h3 data-copy="target.items.1.title">解決する業務：シフト作成工数の削減</h3><p data-copy="target.items.1.body">紙・グループLINE・Excelでの希望回収と転記、確定後の連絡までを、LINEとブラウザにまとめます。</p></div>
+  </div>
+</div></section>
+
+<section class="alt" id="selfcheck"><div class="wrap">
+  <h2 style="text-align:center">シフト管理の課題をセルフチェック</h2>
+  <p class="h2sub" style="text-align:center">当てはまるものを選ぶと、AXIA Shiftでできることをご案内します。</p>
+  <div class="form" id="sc-box">
+    <form id="sc-form" novalidate>
+      <ul class="sc-list">
+        <li><label><input type="checkbox" name="sc" value="collect"><span>シフト希望の回収・催促に時間がかかっている</span></label></li>
+        <li><label><input type="checkbox" name="sc" value="create"><span>シフト表の作成に時間がかかっている</span></label></li>
+        <li><label><input type="checkbox" name="sc" value="help"><span>店舗間のヘルプ調整が煩雑になっている</span></label></li>
+        <li><label><input type="checkbox" name="sc" value="notify"><span>確定後の連絡漏れ・修正対応が発生している</span></label></li>
+      </ul>
+      <button class="btn" type="submit" style="width:100%;margin:0;cursor:pointer;font:inherit;font-weight:700">結果を見る</button>
+      <p class="sc-msg" id="sc-msg" role="status"></p>
+    </form>
+    <div class="sc-result" id="sc-result" hidden></div>
   </div>
 </div></section>
 
@@ -245,6 +273,42 @@ LINEとブラウザで完結。</h1>
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[data-cta]');
     if(a){ send(a.getAttribute('href')==='#trial'?'trial_cta_click':'demo_cta_click',{product:'shift',placement:a.getAttribute('data-cta')}); }
+  });
+})();
+// セルフチェック: 計測は既存のGA4(gtag)を利用。回答内容・個人情報は送信しない
+(function(){
+  var form=document.getElementById('sc-form'); if(!form){return;}
+  function send(name,params){ if(typeof gtag==='function'){ gtag('event',name,params); } }
+  var DATA={
+    collect:{q:'シフト希望の回収・催促',t:'LINEでシフト希望を回収',b:'スタッフは普段のLINEで希望を送るだけ。回収・集計の手作業を減らせます。',c:'試験導入では、スタッフが無理なく希望を提出でき、催促の回数や手間が減るかを確認しましょう。'},
+    create:{q:'シフト表の作成',t:'ブラウザでシフト表を作成',b:'集まった希望が表に自動で入り、人数の過不足もひと目で分かります。',c:'試験導入では、店長がシフト表を作る時間が現状と比べて短くなるかを確認しましょう。'},
+    help:{q:'店舗間ヘルプ調整',t:'複数店舗のヘルプ調整・兼務対応',b:'人が足りない日に近くの店舗へヘルプを依頼でき、兼務スタッフも日ごとに出勤店舗を選べます。',c:'試験導入では、自社のヘルプ調整や兼務の運用に合うかを確認しましょう。'},
+    notify:{q:'確定後の連絡・修正',t:'確定してLINEで一斉配信／変更履歴',b:'確定したシフト表をLINEで全員に配信でき、変更履歴も記録されます。',c:'試験導入では、連絡漏れや確認の手間が減るか、修正時の対応がしやすいかを確認しましょう。'}
+  };
+  var started=false, msg=document.getElementById('sc-msg'), res=document.getElementById('sc-result');
+  function el(tag,text,cls){ var e=document.createElement(tag); if(text){e.textContent=text;} if(cls){e.className=cls;} return e; }
+  form.addEventListener('change',function(){ if(!started){started=true; send('selfcheck_start',{product:'shift'});} });
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var sel=[].slice.call(form.querySelectorAll('input[name=sc]:checked')).map(function(i){return i.value;});
+    if(!sel.length){ msg.textContent='当てはまる項目を1つ以上選んでください。'; return; }
+    msg.textContent='';
+    if(!started){started=true; send('selfcheck_start',{product:'shift'});}
+    res.textContent='';
+    res.appendChild(el('h3','AXIA Shiftでできること'));
+    sel.forEach(function(k){
+      var d=DATA[k], card=el('div',null,'card');
+      card.appendChild(el('h4','課題：'+d.q));
+      card.appendChild(el('h3',d.t));
+      card.appendChild(el('p',d.b));
+      card.appendChild(el('p','試験導入で確認したいこと：'+d.c,'sc-check'));
+      res.appendChild(card);
+    });
+    var a=el('a','まずは1か月無料で試す','btn'); a.href='#trial'; a.style.margin='8px 0 0';
+    a.addEventListener('click',function(){ send('selfcheck_trial_click',{product:'shift'}); });
+    res.appendChild(a);
+    res.hidden=false;
+    send('selfcheck_complete',{product:'shift',selected_count:sel.length});
   });
 })();
 </script>
