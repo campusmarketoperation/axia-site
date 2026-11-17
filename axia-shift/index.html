@@ -75,6 +75,12 @@ footer a{color:var(--sub);margin-right:18px}
   th{width:38%}
   section{padding:48px 0}
 }
+.m-cta{display:none}
+@media (max-width:768px){
+  .m-cta{display:block;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:100;text-align:center;background:#222;color:#fff;font-weight:700;padding:14px 16px;border-radius:6px;border:2px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.35);text-decoration:none;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s}
+  .m-cta.is-show{opacity:1;visibility:visible;pointer-events:auto}
+}
+@media (prefers-reduced-motion:reduce){.m-cta{transition:none}}
 </style>
 </head>
 <body>
@@ -219,6 +225,7 @@ LINEとブラウザで完結。</h1>
   <a href="/">AXIA トップ</a><a href="/axia-shift/">AXIA Shift</a><a href="/tokushoho/">特定商取引法に基づく表記</a><a href="/terms/">利用規約</a><a href="/privacy/">プライバシーポリシー</a>
   <p style="margin:14px 0 0">© 2026 AXIA. All rights reserved.</p>
 </div></footer>
+<a class="m-cta" id="m-cta" href="/#contact" aria-label="無料試験導入の相談">無料試験導入について相談する</a>
 <script>
 // 文言管理: /axia-shift/copy.json の値で data-copy 付き要素のテキストを差し替える。
 // （JSONが読めない場合は、HTMLに書かれた文言がそのまま表示される）
@@ -260,6 +267,19 @@ LINEとブラウザで完結。</h1>
     var a=e.target.closest&&e.target.closest('a[data-cta]');
     if(a){ send(a.getAttribute('href')==='#trial'?'trial_cta_click':'demo_cta_click',{product:'shift',placement:a.getAttribute('data-cta')}); }
   });
+})();
+// モバイル固定CTA: 768px以下のみ。1秒後にフェードイン、フッター到達時は非表示
+(function(){
+  var cta=document.getElementById('m-cta'),foot=document.querySelector('footer');
+  if(!cta||!window.matchMedia){return;}
+  var mq=window.matchMedia('(max-width:768px)'),ready=false,atFoot=false;
+  function upd(){ cta.classList.toggle('is-show',mq.matches&&ready&&!atFoot); }
+  setTimeout(function(){ready=true;upd();},1000);
+  if(mq.addEventListener){mq.addEventListener('change',upd);}
+  if(foot&&'IntersectionObserver' in window){
+    new IntersectionObserver(function(es){atFoot=es[0].isIntersecting;upd();}).observe(foot);
+  }
+  cta.addEventListener('click',function(){ if(typeof gtag==='function'){ gtag('event','click_mobile_cta_consult',{product:'shift',placement:'mobile_fixed'}); } });
 })();
 </script>
 </body>
